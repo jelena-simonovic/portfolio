@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import login_user, logout_user, login_required
-from forms import LoginForm
+from forms import LoginForm, BlogPostForm, ProjectForm
 from app.models import User, Project, BlogPost
-
+from extensions import db
 
 main_routes = Blueprint('main', __name__)
 
@@ -50,3 +50,42 @@ def logout():
 @login_required
 def dashboard():
     return render_template('dashboard.html')
+
+@main_routes.route('/dashboard/add_blog_post', methods=['GET', 'POST'])
+def add_blog_post():
+    form = BlogPostForm()
+    if form.validate_on_submit():
+        title = request.form.get('title')
+        content = request.form.get('content')
+
+        new_blog_post = BlogPost(title=title, content=content)
+
+        db.session.add(new_blog_post)
+        db.session.commit()
+
+        flash('Blog post added successfully!', 'success')
+        return redirect(url_for('main.blog'))
+
+    # Render the form template
+    return render_template('add_blog_post.html', form=form) 
+
+@main_routes.route('/dashboard/add_project', methods=['GET', 'POST'])
+def add_project():
+    form = ProjectForm()
+    if form.validate_on_submit():
+        title = request.form.get('title')
+        description = request.form.get('description')
+        technologies = request.form.get('technologies')
+        link = request.form.get('link')
+
+        new_project = Project(title=title, description=description, technologies=technologies, link=link)
+
+        db.session.add(new_project)
+        db.session.commit()
+
+        flash('Blog post added successfully!', 'success')
+        return redirect(url_for('main.projects'))
+
+    # Render the form template
+    flash('Error', 'success')
+    return render_template('add_project.html', form=form) 

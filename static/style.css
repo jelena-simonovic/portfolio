@@ -1,3 +1,47 @@
-body {
-    background-color: antiquewhite;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.kanit-regular {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
+.kanit-semibold {
+  font-family: "Kanit", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+    background-color:hsla(0,0%,100%,1);
+    background-image:
+    radial-gradient(at 80% 0%, rgba(31, 255, 109, 0.853) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(243, 255, 219, 0.866) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(212,100%,86%,1) 0px, transparent 50%);
+    height: 100vh;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+footer ul {
+    display: flex;
+    padding: 0;
+    gap: 1rem;
+}
+footer ul li {
+    list-style-type: none;
+}
+
+input:not(#submit) {
+    border: none;
+    box-shadow: -1px 4px 7px 2px rgba(0,0,0,0.35);
+    -webkit-box-shadow: -1px 4px 7px 2px rgba(0,0,0,0.35);
+    -moz-box-shadow: -1px 4px 7px 2px rgba(0,0,0,0.35);
+    border-radius: 5px;
+}
+

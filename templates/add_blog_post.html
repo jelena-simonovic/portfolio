@@ -1,0 +1,12 @@
+    <h1>Add New Blog Post</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" rows="5" required></textarea><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>

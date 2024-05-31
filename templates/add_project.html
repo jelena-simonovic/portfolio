@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+</head>
+<body>
+    <h1>Add Project</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.title.label }}<br>
+            {{ form.title(size=50) }}<br>
+            {% for error in form.title.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.description.label }}<br>
+            {{ form.description(rows=5, cols=50) }}<br>
+            {% for error in form.description.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.technologies.label }}<br>
+            {{ form.technologies(size=50) }}<br>
+            {% for error in form.technologies.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.link.label }}<br>
+            {{ form.link(size=50) }}<br>
+            {% for error in form.link.errors %}
+                <span style="color: red;">{{ error }}</span><br>
+            {% endfor %}
+        </div>
+        <div>
+            <button type="submit">Add Project</button>
+        </div>
+    </form>
+</body>
+</html>
